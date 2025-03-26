@@ -8,7 +8,7 @@ from database.config import SessionLocal, metadata, engine
 tracks = Table("tracks", metadata, autoload_with=engine)
 
 
-def get_all_music() -> List[RowMapping[str, Any]]:
+def get_all_tracks() -> List[RowMapping[str, Any]]:
     with SessionLocal() as session:
         result = session.execute(tracks.select()).mappings().all()
 
