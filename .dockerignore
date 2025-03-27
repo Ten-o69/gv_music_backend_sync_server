@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# OS / Editor junk
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Bytecode
+*.pyc
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Env files (если хранятся вне production)
+.env
+.env.*
+
+# PyCharm / VSCode
+.idea/
+.vscode/
