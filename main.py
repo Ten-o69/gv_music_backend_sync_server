@@ -4,11 +4,12 @@ from ten_utils.log import Logger
 
 from common.constants import (
     ENV_MODE,
+    LOG_LEVEL,
 )
 from sync.database import sync_db_table_tracks
 
 
-logger = Logger(__name__, level=0)
+logger = Logger(__name__, level=LOG_LEVEL)
 
 
 def run_sync() -> None:

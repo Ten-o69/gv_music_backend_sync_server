@@ -13,10 +13,11 @@ from common.constants import (
     DIR_DATA,
     DIR_MUSIC,
     DIR_MUSIC_COVER,
+    LOG_LEVEL,
 )
 
 
-logger = Logger(__name__, level=0)
+logger = Logger(__name__, level=LOG_LEVEL)
 
 
 def sync_db_table_tracks():
