@@ -30,6 +30,7 @@ def run_sync() -> None:
             logger.info("Start synchronization of track paths...")
             sync_db_table_tracks()
             logger.info("Finish synchronization of track paths!")
+            print("--------------------------------------------")
 
             time.sleep(10)
 
@@ -42,6 +43,7 @@ def run_sync() -> None:
         logger.info("Start synchronization of track paths...")
         sync_db_table_tracks()
         logger.info("Finish synchronization of track paths!")
+        print("--------------------------------------------")
 
     else:
         logger.critical("ENV environment variable is not set")
