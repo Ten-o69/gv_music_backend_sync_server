@@ -23,3 +23,12 @@ DIR_MUSIC_COVER = DIR_DATA / "music_cover"
 
 # database
 DATABASE_URL = os.getenv("DATABASE_URL", None)
+DATABASE_LOG: int | bool = int(os.getenv("DATABASE_LOG", 0))
+if DATABASE_LOG == 0:
+    DATABASE_LOG = False
+
+elif DATABASE_LOG == 1:
+    DATABASE_LOG = True
+
+# log
+LOG_LEVEL: int = int(os.getenv("LOG_LEVEL", 0))
