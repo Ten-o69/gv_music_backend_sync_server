@@ -1,1 +1,0 @@
-*/10 * * * * /usr/bin/python3 /app/main.py >> /var/log/sync.log 2>&1
