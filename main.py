@@ -12,6 +12,16 @@ from sync.database import sync_db_table_tracks
 logger = Logger(__name__, level=LOG_LEVEL)
 
 
+def run_sync_db(delay: int) -> None:
+    while True:
+        logger.info("Start synchronization of track paths...")
+        sync_db_table_tracks()
+        logger.info("Finish synchronization of track paths!")
+        print("--------------------------------------------")
+
+        time.sleep(delay)
+
+
 def run_sync() -> None:
     """
     Функция для запуска синхронизации.
@@ -27,13 +37,7 @@ def run_sync() -> None:
         При запуске в режиме разработки, 
         скрипт синхронизации запускается каждые 10 сек
         """
-        while True:
-            logger.info("Start synchronization of track paths...")
-            sync_db_table_tracks()
-            logger.info("Finish synchronization of track paths!")
-            print("--------------------------------------------")
-
-            time.sleep(10)
+        run_sync_db(delay=10)
 
     elif ENV_MODE == "prod":
         """
@@ -41,10 +45,7 @@ def run_sync() -> None:
         скрипт синхронизации запускается с помощью cron
         внутри docker образа
         """
-        logger.info("Start synchronization of track paths...")
-        sync_db_table_tracks()
-        logger.info("Finish synchronization of track paths!")
-        print("--------------------------------------------")
+        run_sync_db(delay=60)
 
     else:
         logger.critical("ENV environment variable is not set")
