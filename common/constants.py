@@ -1,34 +1,24 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-from ten_utils.log import Logger
+from ten_utils.log import LoggerConfig
+from ten_utils.env_loader import EnvLoader
 
 
-# base
+# env
 ENV_MODE = os.getenv("ENV", "dev")
-load_dotenv(f".env.{ENV_MODE}")
-logger = Logger(__name__, level=4)
+env_loader = EnvLoader(f".env.{ENV_MODE}")
 
 # path
-DIR_DATA = os.getenv("DIR_DATA", None)
-if DIR_DATA:
-    DIR_DATA = Path(DIR_DATA)
-
-else:
-    logger.critical("DIR_DATA environment variable is not set")
-
+DIR_DATA = env_loader.load("DIR_DATA", Path)
 DIR_MUSIC = DIR_DATA / "music"
 DIR_MUSIC_COVER = DIR_DATA / "music_cover"
 
 # database
-DATABASE_URL = os.getenv("DATABASE_URL", None)
-DATABASE_LOG: int | bool = int(os.getenv("DATABASE_LOG", 0))
-if DATABASE_LOG == 0:
-    DATABASE_LOG = False
-
-elif DATABASE_LOG == 1:
-    DATABASE_LOG = True
+DATABASE_URL = env_loader.load("DATABASE_URL", str)
+DATABASE_LOG: bool = env_loader.load("DATABASE_LOG", bool)
 
 # log
-LOG_LEVEL: int = int(os.getenv("LOG_LEVEL", 0))
+LoggerConfig().set_default_level_log(
+    env_loader.load("LOG_LEVEL", int)
+)  # setting the default logging level value
