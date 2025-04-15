@@ -1,6 +1,6 @@
 # 🎵 GV Music Backend Sync Server
 
-Sync server that is used in the main project [gv_music_backend](https://github.com/Ten-o69/gv_music_backend).
+Sync server that is used in the main project [gv_music_backend](https://github.com/Ten-o69/gv_music_backend).  
 Very simple implementation of synchronisation of paths within the database and by actual paths in the file system.
 
 ## 🚀 Features
@@ -30,14 +30,23 @@ Very simple implementation of synchronisation of paths within the database and b
    pip install -r requirements.txt
    ```
 
-4. **Configure environment variables:**
+4. **Create and configure the `.env.dev` file:**
 
-   Set the `ENV_MODE` environment variable to specify the mode of operation:
+   In the project root, create a file named `.env.dev` with the following content:
 
-   - `dev` for development mode (synchronizes every 10 seconds)
-   - `prod` for production mode (synchronizes every 60 seconds)
+   ```env
+   # database
+   DATABASE_URL=pymysql://user:password@ip:port/db
+   DATABASE_LOG=False
 
-   Example:
+   # paths
+   DIR_DATA=<path/to/dir/>
+
+   # log
+   LOG_LEVEL=0
+   ```
+
+5. **Set environment variable to specify the mode:**
 
    ```bash
    export ENV_MODE=dev  # On Windows: set ENV_MODE=dev
@@ -52,6 +61,9 @@ python main.py
 ```
 
 The server will start and perform synchronization based on the specified `ENV_MODE`.
+
+- In **development mode (`dev`)**: Synchronization occurs every 10 seconds.
+- In **production mode (`prod`)**: Synchronization occurs every 60 seconds.
 
 ## 📄 License
 
