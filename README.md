@@ -40,7 +40,7 @@ Very simple implementation of synchronisation of paths within the database and b
    DATABASE_LOG=False
 
    # paths
-   DIR_DATA=<path/to/dir/>
+   DIR_DATA=path/to/dir/
 
    # log
    LOG_LEVEL=0
