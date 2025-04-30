@@ -57,7 +57,9 @@ def sync_db_table_tracks() -> None:
     for track in track_list:
         track = CustomDict(dict(track))
         paths_to_tracks.append(DIR_DATA / track.path)
-        paths_to_track_covers.append(DIR_DATA / track.cover_path)
+
+        if track.cover_path is not None:
+            paths_to_track_covers.append(DIR_DATA / track.cover_path)
 
     logger.info("Synchronising paths to music tracks...")
     # Delete orphaned track files
