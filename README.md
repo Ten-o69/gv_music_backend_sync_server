@@ -60,6 +60,12 @@ Run the synchronization server:
 python main.py
 ```
 
+Or you can build a docker image and run the container:
+```bash
+docker build -t my_image .
+docker run -e ENV=prod --env-file .env.prod my_image
+```
+
 The server will start and perform synchronization based on the specified `ENV_MODE`.
 
 - In **development mode (`dev`)**: Synchronization occurs every 10 seconds.
