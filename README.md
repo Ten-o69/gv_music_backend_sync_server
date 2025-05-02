@@ -66,6 +66,10 @@ docker build -t my_image .
 docker run -e ENV=prod --env-file .env.prod my_image
 ```
 
+##### Warnings:
+> A project in a docker image can **ONLY** be run in `prod` mode.
+Trying to run in `dev` mode will result in an error loading environment variables.
+
 The server will start and perform synchronization based on the specified `ENV_MODE`.
 
 - In **development mode (`dev`)**: Synchronization occurs every 10 seconds.
