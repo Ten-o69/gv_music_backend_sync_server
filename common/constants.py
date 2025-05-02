@@ -7,7 +7,15 @@ from ten_utils.env_loader import EnvLoader
 
 # env
 ENV_MODE = os.getenv("ENV", "dev")
-env_loader = EnvLoader(f".env.{ENV_MODE}")
+
+if ENV_MODE == "dev":
+    env_loader = EnvLoader(f".env.{ENV_MODE}")
+
+elif ENV_MODE == "prod":
+    env_loader = EnvLoader(getenv_mode=True)
+
+else:
+    raise ValueError("Incorrect value of the environment variable ENV_MODE")
 
 # path
 DIR_DATA = env_loader.load("DIR_DATA", Path)
